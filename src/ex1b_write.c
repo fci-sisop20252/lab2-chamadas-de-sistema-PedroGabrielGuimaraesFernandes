@@ -4,7 +4,7 @@
  * OBJETIVO: Entender como write() se comporta com strace
  * 
  * TAREFA: Este código está completo. Você só precisa:
- * 1. Compilar: gcc src/ex1b_write.c -o ex1b_write
+ * 1. Compilar: cc
  * 2. Executar: ./ex1b_write
  * 3. Observar com strace: strace -e write ./ex1b_write
  */
