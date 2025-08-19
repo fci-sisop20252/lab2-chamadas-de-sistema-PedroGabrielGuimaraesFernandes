@@ -59,7 +59,7 @@ int main() {
      * TODO 5: Adicionar terminador nulo
      * Para tratar o buffer como string
      */
-    bytes_lidos += \0;
+    buffer[bytes_lidos] = '\0';
     
     // Exibir resultados
     printf("Bytes lidos: %ld\n", bytes_lidos);
@@ -69,7 +69,7 @@ int main() {
      * TODO 6: Fechar o arquivo
      * Use close() para liberar o file descriptor
      */
-    if (/* COMPLETE AQUI */) {
+    if (close(fd) < 0) {
         perror("Erro ao fechar arquivo");
         return 1;
     }
