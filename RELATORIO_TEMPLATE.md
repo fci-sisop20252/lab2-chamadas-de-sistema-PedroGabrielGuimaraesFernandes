@@ -13,19 +13,19 @@ strace -e write ./ex1b_write
 ### Análise
 
 **1. Quantas syscalls write() cada programa gerou?**
-- ex1a_printf: _____ syscalls
-- ex1b_write: _____ syscalls
+- ex1a_printf: ___9__ syscalls
+- ex1b_write: ___7__ syscalls
 
 **2. Por que há diferença entre printf() e write()?**
 
 ```
-[Sua análise aqui]
+Porque o printf() é uma função de uma bliblioteca que manda o texto formatado para o buffer e depis chama o write(), já ´white() é uma função do systema(syscall) que Vai direto para o kernel pedir que escreva os dados que te passei e não passa por um buffer.
 ```
 
 **3. Qual implementação você acha que é mais eficiente? Por quê?**
 
 ```
-[Sua análise aqui]
+Acho que anbos podem ser uteis dependendo da situação mas eu faria preferencia para o printf() pois ele permite formatar os dados e usa o buffer que só faz o write quando está cheio ou enconta \n, o que é mais eficiente quando se tem que fazer varias chamadas diferentes.
 ```
 
 ---
