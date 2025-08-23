@@ -33,8 +33,8 @@ Acho que anbos podem ser uteis dependendo da situação mas eu faria preferencia
 ## Exercício 2 - Leitura de Arquivo
 
 ### Resultados da execução:
-- File descriptor: _____
-- Bytes lidos: _____
+- File descriptor: __3___
+- Bytes lidos: __127___
 
 ### Comando strace:
 ```bash
@@ -46,13 +46,13 @@ strace -e open,read,close ./ex2_leitura
 **1. Por que o file descriptor não foi 0, 1 ou 2?**
 
 ```
-[Sua análise aqui]
+Porque os descritores 0, 1 e 2 já são reservados pelo sistema, ou seja o kernel automaticamente abre 3 descritores padrão, um para a entrada do teclado que é p 0 ou 'stdin', outro para a saida de informações para a tela o 1 ou stdout, e por ultimo outra saida para a tela mas esta agora focada em erros. Sendo assim a primeiro por ta livre era a 3 por isso não foi a o, 1 ou 2.
 ```
 
 **2. Como você sabe que o arquivo foi lido completamente?**
 
 ```
-[Sua análise aqui]
+Sabemos que o arquivo foi lido completamente, pela linha "read(3, "Esta e a primeira linha do arqui"..., 127) = 127" pois ela nos fala que retornou exatamente 127 bytes, e em seguida o programa mostrou todo o conteúdo esperado do arquivo (todas as linhas).
 ```
 
 ---
@@ -69,23 +69,23 @@ strace -e open,read,close ./ex2_leitura
 
 | Buffer Size | Chamadas read() | Tempo (s) |
 |-------------|-----------------|-----------|
-| 16          |                 |           |
-| 64          |                 |           |
-| 256         |                 |           |
-| 1024        |                 |           |
+| 16          |        23         |     0.000139      |
+| 64          |        23         |     0.000123      |
+| 256         |        23         |     0.000133      |
+| 1024        |        23         |     0.000119      |
 
 ### Análise
 
 **1. Como o tamanho do buffer afeta o número de syscalls?**
 
 ```
-[Sua análise aqui]
+Apesar de ser não haver uma diferença visual no númeroa de chamadas podemos ver que a velocidade tende a ser mais rapida se o buffer for maior portanto acredito que Buffers maiores reduzem o número de syscalls em arquivos grandes e tornam cada chamada mais eficiente, apessar de não ser muito visivel nesse caso.
 ```
 
 **2. Como você detecta o fim do arquivo?**
 
 ```
-[Sua análise aqui]
+O fim do arquivo é detectado quando "(bytes_lidos = read(fd, buffer, BUFFER_SIZE)) > 0" da falso, ou seja não foi possivel ler mais nenhum dado do arquivo logo ele acabou.
 ```
 
 ---
