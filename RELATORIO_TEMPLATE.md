@@ -93,29 +93,29 @@ O fim do arquivo é detectado quando "(bytes_lidos = read(fd, buffer, BUFFER_SIZ
 ## Exercício 4 - Cópia de Arquivo
 
 ### Resultados:
-- Bytes copiados: _____
-- Operações: _____
-- Tempo: _____ segundos
-- Throughput: _____ KB/s
+- Bytes copiados: __1364___
+- Operações: __6___
+- Tempo: __0.000453___ segundos
+- Throughput: __2940.47___ KB/s
 
 ### Verificação:
 ```bash
 diff dados/origem.txt dados/destino.txt
 ```
-Resultado: [ ] Idênticos [ ] Diferentes
+Resultado: [x] Idênticos [ ] Diferentes
 
 ### Análise
 
 **1. Por que devemos verificar que bytes_escritos == bytes_lidos?**
 
 ```
-[Sua análise aqui]
+Para garantir que não deixamos de escrever algo no arquivo novo devido a alguma interrupção do sistema ou tramanho de buffer, ou seja se n~qao fizermos essa verigficação podemos acabar perdendo dados
 ```
 
 **2. Que flags são essenciais no open() do destino?**
 
 ```
-[Sua análise aqui]
+As 3 flags são importantes(O_WRONLY | O_CREAT | O_TRUNC), o O_WRONLY abre o arquivo apenas para escrita necessario pois estamos usando write(), já o O_CREAT cria o arquivo se ele não existir, sem ele teriammos um erro no open() se o arquivo não existisse, e por ultimo O_TRUNC se o arquivo já existir, zera o conteúdo antes de escrever, o que é necessario se não quisermos que o conteudo antigo fique no arquivo.
 ```
 
 ---
@@ -163,8 +163,8 @@ time cp dados/origem.txt dados/destino_cp.txt
 ## Entrega
 
 Certifique-se de ter:
-- [ ] Todos os códigos com TODOs completados
-- [ ] Traces salvos em `traces/`
+- [x] Todos os códigos com TODOs completados
+- [x] Traces salvos em `traces/`
 - [ ] Este relatório preenchido como `RELATORIO.md`
 
 ```bash
