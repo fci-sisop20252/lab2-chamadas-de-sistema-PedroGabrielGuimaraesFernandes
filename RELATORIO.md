@@ -60,19 +60,19 @@ Sabemos que o arquivo foi lido completamente, pela linha "read(3, "Esta e a prim
 ## Exercício 3 - Contador com Loop
 
 ### Resultados (BUFFER_SIZE = 64):
-- Linhas: _____ (esperado: 25)
-- Caracteres: _____
-- Chamadas read(): _____
-- Tempo: _____ segundos
+- Linhas: ___24__ (esperado: 25)
+- Caracteres: __1299___
+- Chamadas read(): __21___
+- Tempo: __0,000123___ segundos
 
 ### Experimentos com buffer:
 
 | Buffer Size | Chamadas read() | Tempo (s) |
 |-------------|-----------------|-----------|
-| 16          |        23         |     0.000139      |
-| 64          |        23         |     0.000123      |
-| 256         |        23         |     0.000133      |
-| 1024        |        23         |     0.000119      |
+| 16          |        82         |     0.000180      |
+| 64          |        72         |     0.000123      |
+| 256         |        6          |     0.000071      |
+| 1024        |        2          |     0.000068      |
 
 ### Análise
 
@@ -150,12 +150,12 @@ time ./ex4_copia
 time cp dados/origem.txt dados/destino_cp.txt
 ```
 
-**Qual foi mais rápido?** _____
+**Qual foi mais rápido?** ___o programa__
 
 **Por que você acha que foi mais rápido?**
 
 ```
-[Sua análise aqui]
+Porque o programa fazia o contato mais rapido com o kernel pela syscall
 ```
 
 ---
